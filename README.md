@@ -5,7 +5,8 @@ A set of WinForms user controls written in C# to extend WinForms functionality
 Add ExtendedControls.dll as reference to your WinForms project.
 
 ## Controls
-**StatusBox** - Holds an index of various statuses.
+### StatusBox
+#### Holds an index of various statuses.
 * On click when `Interactive = true` StatusBox cycles to the next status.
 * If final status is reached then it restarts at index 0.
 * Each Status is defined with a description and an icon stored in Statuses.
