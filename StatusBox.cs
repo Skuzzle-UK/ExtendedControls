@@ -175,6 +175,7 @@ namespace ExtendedControls
                     Value = 0;
                 }
                 ShowSelected();
+                tooltip.SetToolTip(this.iconBox, Statuses[selectedIndex].Description);
             }
         }
 
