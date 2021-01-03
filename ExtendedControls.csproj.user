@@ -3,6 +3,6 @@
   <PropertyGroup>
     <ReferencePath>
     </ReferencePath>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
 </Project>

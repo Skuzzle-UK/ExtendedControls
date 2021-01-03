@@ -1,7 +1,9 @@
-bin/
+bin/Debug/
 obj/
 .vs/
 Properties/
 *.csproj
 *.sln
 *.xcf
+*.pdb
+
