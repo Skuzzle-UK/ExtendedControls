@@ -37,7 +37,8 @@ namespace ExtendedControls
             // 
             this.iconBox.Location = new System.Drawing.Point(0, 0);
             this.iconBox.Name = "iconBox";
-            this.iconBox.Size = new System.Drawing.Size(150, 150);
+            this.iconBox.Size = new System.Drawing.Size(100, 100);
+            this.iconBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.iconBox.TabIndex = 0;
             this.iconBox.TabStop = false;
             this.iconBox.Click += new System.EventHandler(this.iconBox_Click);
@@ -46,9 +47,11 @@ namespace ExtendedControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.iconBox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StatusBox";
+            this.Size = new System.Drawing.Size(100, 100);
             ((System.ComponentModel.ISupportInitialize)(this.iconBox)).EndInit();
             this.ResumeLayout(false);
 
