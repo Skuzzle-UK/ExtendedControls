@@ -35,23 +35,28 @@ namespace ExtendedControls
             // 
             // iconBox
             // 
+            this.iconBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconBox.Location = new System.Drawing.Point(0, 0);
+            this.iconBox.Margin = new System.Windows.Forms.Padding(0);
             this.iconBox.Name = "iconBox";
-            this.iconBox.Size = new System.Drawing.Size(100, 100);
+            this.iconBox.Size = new System.Drawing.Size(98, 98);
             this.iconBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.iconBox.TabIndex = 0;
             this.iconBox.TabStop = false;
             this.iconBox.Click += new System.EventHandler(this.iconBox_Click);
+            this.iconBox.MouseHover += new System.EventHandler(this.iconBox_MouseHover);
             // 
             // StatusBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.iconBox);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StatusBox";
-            this.Size = new System.Drawing.Size(100, 100);
+            this.Size = new System.Drawing.Size(98, 98);
             ((System.ComponentModel.ISupportInitialize)(this.iconBox)).EndInit();
             this.ResumeLayout(false);
 

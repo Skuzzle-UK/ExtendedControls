@@ -49,7 +49,6 @@ namespace ExtendedControls
         public List<Status> Statuses
         {
             get { return statuses; }
-            //@TODO work out issue where control wont "Reload()" after set - gives problem in editor why it wont show correctly unless SelectedIndex set
             set
             {
                 statuses = value;
@@ -150,6 +149,12 @@ namespace ExtendedControls
                 }
                 ShowSelected();
             }
+        }
+
+        private ToolTip tooltip = new ToolTip();
+        private void iconBox_MouseHover(object sender, EventArgs e)
+        {
+            tooltip.SetToolTip(this.iconBox, Statuses[selectedIndex].Description);
         }
     }
 }
