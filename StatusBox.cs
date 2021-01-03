@@ -38,6 +38,7 @@ namespace ExtendedControls
         public List<Status> Statuses
         {
             get { return statuses; }
+            //@TODO work out issue where control wont "Reload()" after set - gives problem in editor why it wont show correctly unless SelectedIndex set
             set
             {
                 statuses = value;
