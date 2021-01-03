@@ -6,6 +6,7 @@ A set of WinForms user controls written in C# to extend WinForms functionality
 
 ### **StatusBox**
 **On click cycles through an index of various statuses.**
+
 Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon to display current status.
 * On click when `Interactive = true` StatusBox cycles to the next status.
 * If final status is reached then it restarts at index 0.
