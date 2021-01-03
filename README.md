@@ -12,6 +12,7 @@ Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon
 * If final status is reached then it restarts at index 0.
 * Each Status is defined with a *description* and an *icon* and then stored in Statuses.
 * Access with `StatusBox.Value` to get or set current index value.
+* Access with `StatusBox.Selected` to get current status description string.
 * By default loaded with *pending*, *in_progress*, *paused*, *complete*, *cancelled*.
 * Can be loaded with as many *Statuses* as you wish and default ones can be removed from list or re-ordered.
 * To fit in with original design it is suggested that *icon* image files should be 100x100 px with 7px transparent padding.

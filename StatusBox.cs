@@ -60,7 +60,7 @@ namespace ExtendedControls
 
         private int selectedIndex;
         [Category("Settings")]
-        [Description("Set the initial status via index value")]
+        [Description("Set or return the status via index value")]
         public int Value
         {
             get { return selectedIndex; }
@@ -87,9 +87,10 @@ namespace ExtendedControls
 
         [Browsable (false)]
         [Description("Returns the status description as a string")]
-        public override string Text
+        public string Selected
         {
             get { return statuses[selectedIndex].Description; }
+            /*set { @TODO complete a way of setting via Selected accessor }*/
         }
 
         public StatusBox()
