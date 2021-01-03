@@ -1,8 +1,20 @@
-# ExtendedControls
- Set of WinForms user controls to extend winforms functionality
+## ExtendedControls
+A set of WinForms user controls written in C# to extend WinForms functionality
 
-#Usage
-StatusBox - Holds an index of statuses
-Each click if Interactive = true cycles to the next status. If final status reached then restarts at index 0.
-Each Status is defined with a description and an icon stored in Statuses.
-Access with StatusBox.Value to get or set current index value.
+**Usage** Add ExtendedControls.dll as reference to your WinForms project.
+***
+
+### **StatusBox**
+**On click cycles through an index of various statuses.**
+
+Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon to display current status.
+* On click when `Interactive = true` StatusBox cycles to the next status.
+* If final status is reached then it restarts at index 0.
+* Each Status is defined with a *description* and an *icon* and then stored in Statuses.
+* Access with `StatusBox.Value` to get or set current index value.
+* By default loaded with *pending*, *in_progress*, *paused*, *complete*, *cancelled*.
+* Can be loaded with as many *Statuses* as you wish and default ones can be removed from list or re-ordered.
+* To fit in with original design it is suggested that *icon* image files should be 100x100 px with 7px transparent padding.
+***
+
+*Created for one of my private projects but felt like a good idea to share with the world as having easy access to useful controls makes producing awesome software quicker and easier*
