@@ -156,7 +156,7 @@ namespace ExtendedControls
         {
             if (statuses.Count > 0 && Value < statuses.Count)
             {
-                iconBox.Image = statuses[Value].Icon;
+                IconBox.Image = statuses[Value].Icon;
             }
             else if (statuses.Count > 0)
             {
@@ -172,7 +172,7 @@ namespace ExtendedControls
             }
         }
 
-        private void iconBox_Click(object sender, EventArgs e)
+        private void IconBox_Click(object sender, EventArgs e)
         {
             if (interactive)
             {
@@ -185,14 +185,14 @@ namespace ExtendedControls
                     Value = 0;
                 }
                 ShowSelected();
-                tooltip.SetToolTip(this.iconBox, Statuses[selectedIndex].Description);
+                tooltip.SetToolTip(this.IconBox, Statuses[selectedIndex].Description);
             }
         }
 
         private readonly ToolTip tooltip = new ToolTip();
-        private void iconBox_MouseHover(object sender, EventArgs e)
+        private void IconBox_MouseHover(object sender, EventArgs e)
         {
-            tooltip.SetToolTip(this.iconBox, Statuses[selectedIndex].Description);
+            tooltip.SetToolTip(this.IconBox, Statuses[selectedIndex].Description);
         }
     }
 }
