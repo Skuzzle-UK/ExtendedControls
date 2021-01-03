@@ -1,5 +1,6 @@
 ## ExtendedControls
-A set of WinForms user controls written in C# to extend WinForms functionality
+A set of .NETFramework WinForms user controls written in C# to extend WinForms functionality
+Some of these controls will successfully port into a .NET Core WinForms app with a little work.
 
 **Usage** Add ExtendedControls.dll as reference to your WinForms project.
 ***
