@@ -108,37 +108,47 @@ namespace ExtendedControls
 
             imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.pending.png");
             Image pending_icon = Image.FromStream(imageStream);
-            Status pending = new Status();
-            pending.Description = "Pending";
-            pending.Icon = pending_icon;
+            Status pending = new Status
+            {
+                Description = "Pending",
+                Icon = pending_icon
+            };
             statuses.Add(pending);
 
             imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.in_progress.png");
             Image in_progress_icon = Image.FromStream(imageStream);
-            Status in_progress = new Status();
-            in_progress.Description = "In progress";
-            in_progress.Icon = in_progress_icon;
+            Status in_progress = new Status
+            {
+                Description = "In progress",
+                Icon = in_progress_icon
+            };
             statuses.Add(in_progress);
 
             imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.paused.png");
             Image paused_icon = Image.FromStream(imageStream);
-            Status paused = new Status();
-            paused.Description = "Paused";
-            paused.Icon = paused_icon;
+            Status paused = new Status
+            {
+                Description = "Paused",
+                Icon = paused_icon
+            };
             statuses.Add(paused);
 
             imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.complete.png");
             Image complete_icon = Image.FromStream(imageStream);
-            Status complete = new Status();
-            complete.Description = "Complete";
-            complete.Icon = complete_icon;
+            Status complete = new Status
+            {
+                Description = "Complete",
+                Icon = complete_icon
+            };
             statuses.Add(complete);
 
             imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.cancel.png");
             Image cancelled_icon = Image.FromStream(imageStream);
-            Status cancelled = new Status();
-            cancelled.Description = "Cancelled";
-            cancelled.Icon = cancelled_icon;
+            Status cancelled = new Status
+            {
+                Description = "Cancelled",
+                Icon = cancelled_icon
+            };
             statuses.Add(cancelled);
         }
 
@@ -179,7 +189,7 @@ namespace ExtendedControls
             }
         }
 
-        private ToolTip tooltip = new ToolTip();
+        private readonly ToolTip tooltip = new ToolTip();
         private void iconBox_MouseHover(object sender, EventArgs e)
         {
             tooltip.SetToolTip(this.iconBox, Statuses[selectedIndex].Description);
