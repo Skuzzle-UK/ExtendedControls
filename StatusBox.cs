@@ -34,8 +34,16 @@ namespace ExtendedControls
             }
         }
 
-        private List<Status> statuses = new List<Status>();
+        private bool interactive = true;
+        [Category("Settings")]
+        [Description("Can the control value be changed at runtime?")]
+        public bool Interactive
+        {
+            get { return interactive; }
+            set { interactive = value; }
+        }
 
+        private List<Status> statuses = new List<Status>();
         [Category("Settings")]
         [Description("Edit the available statuses")]
         public List<Status> Statuses
@@ -50,7 +58,6 @@ namespace ExtendedControls
         }
 
         private int selectedIndex;
-
         [Category("Settings")]
         [Description("Set the initial status via index value")]
         public int Value
@@ -76,6 +83,7 @@ namespace ExtendedControls
                 }
             }
         }
+
         public StatusBox()
         {
             SetDefaultStatuses();
@@ -130,15 +138,18 @@ namespace ExtendedControls
 
         private void iconBox_Click(object sender, EventArgs e)
         {
-            if (Value < statuses.Count - 1)
+            if (interactive)
             {
-                Value++;
+                if (Value < statuses.Count - 1)
+                {
+                    Value++;
+                }
+                else
+                {
+                    Value = 0;
+                }
+                ShowSelected();
             }
-            else
-            {
-                Value = 0;
-            }
-            ShowSelected();
         }
     }
 }
