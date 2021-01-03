@@ -85,6 +85,13 @@ namespace ExtendedControls
             }
         }
 
+        [Browsable (false)]
+        [Description("Returns the status description as a string")]
+        public override string Text
+        {
+            get { return statuses[selectedIndex].Description; }
+        }
+
         public StatusBox()
         {
             SetDefaultStatuses();
