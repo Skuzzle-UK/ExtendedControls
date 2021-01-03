@@ -11,8 +11,8 @@ namespace ExtendedControls
         [Serializable]
         public class Status
         {
-            string description;
-            Image icon;
+            private string description;
+            private Image icon;
 
             public Status()
             {
@@ -42,7 +42,7 @@ namespace ExtendedControls
             set
             {
                 statuses = value;
-                Reload();
+                ShowSelected();
             }
         }
 
@@ -54,7 +54,7 @@ namespace ExtendedControls
             set 
             {
                 selectedIndex = value;
-                Reload();
+                ShowSelected();
             }
         }
 
@@ -64,13 +64,17 @@ namespace ExtendedControls
 
         }
 
-        public void Reload()
+        private void ShowSelected()
         {
             if (statuses.Count > 0)
             {
                 iconBox.Image = statuses[selectedIndex].Icon;
-                label1.Text = statuses[selectedIndex].Description;
             }
+        }
+
+        private void iconBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
