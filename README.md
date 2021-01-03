@@ -10,5 +10,6 @@ A set of WinForms user controls written in C# to extend WinForms functionality
 * If final status is reached then it restarts at index 0.
 * Each Status is defined with a description and an icon stored in Statuses.
 * Access with `StatusBox.Value` to get or set current index value.
+***
 
 *Created for one of my private projects but felt like a good idea to share with the world as having easy access to useful controls makes producing awesome software quicker and easier*
