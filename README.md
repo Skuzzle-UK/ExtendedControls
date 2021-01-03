@@ -14,6 +14,7 @@ Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon
 * Access with `StatusBox.Value` to get or set current index value.
 * By default loaded with *pending*, *in_progress*, *paused*, *complete*, *cancelled*.
 * Can be loaded with as many *Statuses* as you wish and default ones can be removed from list or re-ordered.
+* To fit in with original design it is suggested that *icon* image files should be 100x100 px with 7px transparent padding.
 ***
 
 *Created for one of my private projects but felt like a good idea to share with the world as having easy access to useful controls makes producing awesome software quicker and easier*
