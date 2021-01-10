@@ -128,6 +128,7 @@ namespace ExtendedControls
         public PriceBox()
         {
             InitializeComponent();
+            label1.Text = System.Globalization.RegionInfo.CurrentRegion.CurrencySymbol;
             UpdateBox();
         }
 
@@ -158,17 +159,23 @@ namespace ExtendedControls
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((sender as TextBox).Text.Length == 0 && (e.KeyChar == '0'))
+            //Checks for sensible key press if units value is zero. Either a decimal place follows 0 unit value or backspace to delete
+            if ((sender as TextBox).Text == "0")
             {
-                e.Handled = true;
+                if ((e.KeyChar != '.') && (e.KeyChar != (char)Keys.Back))
+                {
+                    e.Handled = true;
+                }
             }
 
+            //Forces a zero infront of decimal place if decimal place is typed with no unit value for values lower the 1
             if ((sender as TextBox).Text.Length == 0 && (e.KeyChar == '.'))
             {
                 (sender as TextBox).Text = "0";
                 (sender as TextBox).SelectionStart = (sender as TextBox).Text.Length;
             }
 
+            //Check for numeric, decimal place and backspace only keys
             if (!char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != (char)Keys.Back))
             {
                 e.Handled = true;
@@ -180,12 +187,12 @@ namespace ExtendedControls
                 e.Handled = true;
             }
 
+            //Allow max of 2 decimal places to be typed
             TextBox tb = sender as TextBox;
             int cursorPosLeft = tb.SelectionStart;
             int cursorPosRight = tb.SelectionStart + tb.SelectionLength;
             string result = tb.Text.Substring(0, cursorPosLeft) + e.KeyChar + tb.Text.Substring(cursorPosRight);
             string[] parts = result.Split('.');
-
             if (parts.Length > 1 && (e.KeyChar != (char)Keys.Back))
 
             {
@@ -193,6 +200,44 @@ namespace ExtendedControls
                 {
                     e.Handled = true;
                 }
+            }
+        }
+
+        private void textBox1_Enter(object sender, System.EventArgs e)
+        {
+            textBox1.SelectAll();
+        }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            //Used to format blank textbox value to look like monetary zero value
+            if (textBox1.Text == null || textBox1.Text == "")
+            {
+                textBox1.Text = "0.00";
+            }
+
+            //Adds decimals to the end of textbox to look like monetary value
+            if(!textBox1.Text.Contains("."))
+            {
+                textBox1.Text += ".00";
+            }
+
+            //Adds correct amount of zeros to always make up 2 decimal places
+            string[] parts = textBox1.Text.Split('.');
+            while (parts[1].Length < 2)
+            {
+                parts[1] += "0";
+            }
+
+            textBox1.Text = parts[0] + "." + parts[1];
+        }
+
+        private void textBox1_Click(object sender, System.EventArgs e)
+        {
+            //Selects all characters if decimal value of textbox is 0
+            if(decimal.Parse(textBox1.Text) == 0)
+            {
+                textBox1.SelectAll();
             }
         }
     }
