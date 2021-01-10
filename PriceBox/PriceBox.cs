@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -90,7 +91,7 @@ namespace ExtendedControls
         public decimal Value
         {
             get { return decimal.Parse(textBox1.Text); }
-            set { textBox1.Text = value.ToString(); textBox1_Validating(textBox1, new System.ComponentModel.CancelEventArgs()); UpdateBox(); }
+            set { value = Math.Round(value, 2); textBox1.Text = value.ToString(); textBox1_Validating(textBox1, new System.ComponentModel.CancelEventArgs()); UpdateBox(); }
         }
 
         [Category("Appearance")]
