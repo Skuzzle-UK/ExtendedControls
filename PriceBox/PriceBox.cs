@@ -161,6 +161,12 @@ namespace ExtendedControls
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //Stop at max value based on MaxLength
+            if((sender as TextBox).Text.Length > ((sender as TextBox).MaxLength - 4) && ((sender as TextBox).Text.IndexOf('.') == -1) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
             //Check for all selected to allow decimal place as first keystroke
             if((sender as TextBox).SelectionLength == (sender as TextBox).Text.Length)
             {
