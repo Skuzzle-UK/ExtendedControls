@@ -26,12 +26,12 @@ Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon
 ### **TextBoxExtended**
 **Similar behaviour to a normal TextBox but with extra options.**
 
-**Extended options**
+**Extended options / behaviours**
 * **Padding** - `TextBoxExtended.PadTop`, `TextBoxExtended.PadBottom`, `TextBoxExtended.PadLeft`, `TextBoxExtended.PadRight` to get or set padding sizes.
 
 * **Padding Color** - `TextBoxExtended.PadTopColor`, `TextBoxExtended.PadBottomColor`, `TextBoxExtended.PadLeftColor`, `TextBoxExtended.PadRightColor` to get or set padding colours.
 
-*New padding options are exposed to the IDE's control properties window.*
+*New options / behaviours are exposed to the IDE's control properties window.*
 ***
 
 ### **PriceBox**
