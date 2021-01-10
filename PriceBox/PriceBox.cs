@@ -210,7 +210,14 @@ namespace ExtendedControls
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-            //Used to format blank textbox value to look like monetary zero value
+            
+            //Adds a zero unit to front of value if decimal place is first character
+            if(textBox1.Text.Substring(0, 1) == ".")
+            {
+                textBox1.Text = "0" + textBox1.Text;
+            }
+
+            //Formats blank textbox value to look like monetary zero value
             if (textBox1.Text == null || textBox1.Text == "")
             {
                 textBox1.Text = "0.00";
