@@ -106,7 +106,7 @@ namespace ExtendedControls
             Assembly myAssembly = Assembly.GetExecutingAssembly();
             Stream imageStream;
 
-            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.pending.png");
+            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.StatusBox.images.StatusBox.pending.png");
             Image pending_icon = Image.FromStream(imageStream);
             Status pending = new Status
             {
@@ -115,7 +115,7 @@ namespace ExtendedControls
             };
             statuses.Add(pending);
 
-            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.in_progress.png");
+            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.StatusBox.images.StatusBox.in_progress.png");
             Image in_progress_icon = Image.FromStream(imageStream);
             Status in_progress = new Status
             {
@@ -124,7 +124,7 @@ namespace ExtendedControls
             };
             statuses.Add(in_progress);
 
-            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.paused.png");
+            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.StatusBox.images.StatusBox.paused.png");
             Image paused_icon = Image.FromStream(imageStream);
             Status paused = new Status
             {
@@ -133,7 +133,7 @@ namespace ExtendedControls
             };
             statuses.Add(paused);
 
-            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.complete.png");
+            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.StatusBox.images.StatusBox.complete.png");
             Image complete_icon = Image.FromStream(imageStream);
             Status complete = new Status
             {
@@ -142,7 +142,7 @@ namespace ExtendedControls
             };
             statuses.Add(complete);
 
-            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.images.StatusBox.cancel.png");
+            imageStream = myAssembly.GetManifestResourceStream("ExtendedControls.StatusBox.images.StatusBox.cancel.png");
             Image cancelled_icon = Image.FromStream(imageStream);
             Status cancelled = new Status
             {
