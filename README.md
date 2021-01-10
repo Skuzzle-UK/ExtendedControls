@@ -2,7 +2,10 @@
 A set of .NETFramework WinForms user controls written in C# to extend WinForms functionality
 Some of these controls will successfully port into a .NET Core WinForms app with a little work.
 
-**Usage** Add ExtendedControls.dll as reference to your WinForms project.
+**Please feel free to start adding your own** or even just add ideas for controls that you are looking for and we can have a look at creating for you.
+
+**Usage** Add ExtendedControls.dll as reference to your WinForms project or import just an individual control .cs
+Some controls may require you to import an images or resources folder if you are importing them seperately.
 ***
 
 ### **StatusBox**
