@@ -6,7 +6,7 @@ Some of these controls will successfully port into a .NET Core WinForms app with
 
 **Usage** Add ExtendedControls.dll as reference to your WinForms project or import just an individual control .cs
 If importing a control singularly, some controls may require you to import their entire folder so as to copy in resources and modify file paths inside the c# code.
-Visual studio will bring this to your attention as an error at compile time.
+Your IDE will usually bring this to your attention as an error at compile time.
 ***
 
 ### **StatusBox**
