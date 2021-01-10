@@ -23,4 +23,17 @@ Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon
 * To fit in with original design it is suggested that *icon* image files should be 100x100 px with 7px transparent padding.
 ***
 
+### **TextBoxExtended**
+**Similar behaviour to a normal TextBox but with extra options.**
+
+* `TextBoxExtended.PadTop`, `TextBoxExtended.PadBottom`, `TextBoxExtended.PadLeft`, `TextBoxExtended.PadRight` to get or set padding sizes.
+* `TextBoxExtended.PadTopColor`, `TextBoxExtended.PadBottomColor`, `TextBoxExtended.PadLeftColor`, `TextBoxExtended.PadRightColor` to get or set padding colours.
+* New padding options are exposed to the IDE's control properties window.
+***
+
+### **PriceBox**
+**Price formatted version of TextBoxExtended with a decimal Value accessor.**
+* Work in progress
+***
+
 *Created for one of my private projects but felt like a good idea to share with the world as having easy access to useful controls makes producing awesome software quicker and easier*
