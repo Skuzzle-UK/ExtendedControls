@@ -19,9 +19,9 @@ namespace RunEnvironment
                 {
                     ret = site.DesignMode;
                 }
-                else if (component is System.Windows.Forms.Control)
+                else if (component is System.Windows.Forms.Control control)
                 {
-                    IComponent parent = ((System.Windows.Forms.Control)component).Parent;
+                    IComponent parent = control.Parent;
                     ret = IsInDesignMode(parent);
                 }
             }

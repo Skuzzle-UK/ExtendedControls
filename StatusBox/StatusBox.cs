@@ -190,6 +190,7 @@ namespace ExtendedControls
         }
 
         private readonly ToolTip tooltip = new ToolTip();
+
         private void IconBox_MouseHover(object sender, EventArgs e)
         {
             tooltip.SetToolTip(this.IconBox, Statuses[selectedIndex].Description);
