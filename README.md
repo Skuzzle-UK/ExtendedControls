@@ -25,9 +25,11 @@ Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon
 
 ### **TextBoxExtended**
 **Similar behaviour to a normal TextBox but with extra options.**
+
 **Extended options**
 * Padding
 * Padding Color
+
 
 * `TextBoxExtended.PadTop`, `TextBoxExtended.PadBottom`, `TextBoxExtended.PadLeft`, `TextBoxExtended.PadRight` to get or set padding sizes.
 * `TextBoxExtended.PadTopColor`, `TextBoxExtended.PadBottomColor`, `TextBoxExtended.PadLeftColor`, `TextBoxExtended.PadRightColor` to get or set padding colours.
