@@ -1,7 +1,7 @@
 ﻿
 namespace ExtendedControls
 {
-    partial class TextBoxExtended
+    partial class PriceBox
     {
         /// <summary> 
         /// Required designer variable.
@@ -91,8 +91,10 @@ namespace ExtendedControls
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(272, 24);
             this.textBox1.TabIndex = 2;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
-            // TextBoxExtended
+            // PriceBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,7 +103,7 @@ namespace ExtendedControls
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
-            this.Name = "TextBoxExtended";
+            this.Name = "PriceBox";
             this.Size = new System.Drawing.Size(280, 63);
             this.BackColorChanged += new System.EventHandler(this.TextBoxExtended_BackColorChanged);
             this.ForeColorChanged += new System.EventHandler(this.TextBoxExtended_ForeColorChanged);

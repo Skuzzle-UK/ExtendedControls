@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ExtendedControls
 {
-    public partial class TextBoxExtended : UserControl
+    public partial class PriceBox : UserControl
     {
         private int top = 0;
         private int bottom = 0;
@@ -125,7 +125,7 @@ namespace ExtendedControls
             get { return textBox1.Height; }
         }
 
-        public TextBoxExtended()
+        public PriceBox()
         {
             InitializeComponent();
             UpdateBox();
@@ -154,6 +154,46 @@ namespace ExtendedControls
         private void TextBoxExtended_ForeColorChanged(object sender, System.EventArgs e)
         {
             UpdateBox();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length == 0 && (e.KeyChar == '0'))
+            {
+                e.Handled = true;
+            }
+
+            if ((sender as TextBox).Text.Length == 0 && (e.KeyChar == '.'))
+            {
+                (sender as TextBox).Text = "0";
+                (sender as TextBox).SelectionStart = (sender as TextBox).Text.Length;
+            }
+
+            if (!char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            TextBox tb = sender as TextBox;
+            int cursorPosLeft = tb.SelectionStart;
+            int cursorPosRight = tb.SelectionStart + tb.SelectionLength;
+            string result = tb.Text.Substring(0, cursorPosLeft) + e.KeyChar + tb.Text.Substring(cursorPosRight);
+            string[] parts = result.Split('.');
+
+            if (parts.Length > 1 && (e.KeyChar != (char)Keys.Back))
+
+            {
+                if (parts[1].Length > 2 || parts.Length > 2)
+                {
+                    e.Handled = true;
+                }
+            }
         }
     }
 }
