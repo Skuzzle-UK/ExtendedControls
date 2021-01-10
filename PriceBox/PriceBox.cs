@@ -81,16 +81,16 @@ namespace ExtendedControls
         }
 
         [Category("Appearance")]
-        [Description("Displayed text")]
-        [DisplayName("Text")]
+        [Description("Displayed decimal value")]
+        [DisplayName("Value")]
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Bindable(true)]
-        public override string Text
+        public decimal Value
         {
-            get { return textBox1.Text; }
-            set { textBox1.Text = value; UpdateBox(); }
+            get { return decimal.Parse(textBox1.Text); }
+            set { textBox1.Text = value.ToString(); textBox1_Validating(textBox1, new System.ComponentModel.CancelEventArgs()); UpdateBox(); }
         }
 
         [Category("Appearance")]
@@ -128,6 +128,7 @@ namespace ExtendedControls
         public PriceBox()
         {
             InitializeComponent();
+            Value = 0;
             label1.Text = System.Globalization.RegionInfo.CurrentRegion.CurrencySymbol;
             UpdateBox();
         }
