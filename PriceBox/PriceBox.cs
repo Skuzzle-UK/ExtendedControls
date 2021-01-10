@@ -161,6 +161,17 @@ namespace ExtendedControls
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //Check for all selected to allow decimal place as first keystroke
+            if((sender as TextBox).SelectionLength == (sender as TextBox).Text.Length)
+            {
+                if(e.KeyChar == '.')
+                {
+                    textBox1.Text = "0.";
+                    textBox1.SelectionStart = textBox1.Text.Length;
+                    e.Handled = true;
+                }
+            }
+
             //Checks for sensible key press if units value is zero. Either a decimal place follows 0 unit value or backspace to delete
             if ((sender as TextBox).Text == "0")
             {
