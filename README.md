@@ -36,7 +36,17 @@ Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon
 
 ### **PriceBox**
 **Price formatted version of TextBoxExtended with a decimal Value accessor.**
-* Work in progress
+* Displays currency symbol of local computers system locale.
+* Forces 2 decimal places on all values entered.
+* Only allows numeric values to be entered and only one point followed by 2 decimal places.
+* Defaults to display 0.00 if null value.
+* `PriceBox.Value` sets and returns a decimal value.
+* Example access `decimal basket_total_price = PriceBox.Value;`
+* Example set `PriceBox.Value = 17.47;`
+***
+
+### **ComboBoxExtended**
+* WIP
 ***
 
 *Created for one of my private projects but felt like a good idea to share with the world as having easy access to useful controls makes producing awesome software quicker and easier*

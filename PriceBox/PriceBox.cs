@@ -95,7 +95,7 @@ namespace ExtendedControls
         }
 
         [Category("Appearance")]
-        [Description("Maximum length")]
+        [Description("Maximum length including point and decimal places")]
         [DisplayName("Max Length")]
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
