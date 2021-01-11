@@ -2,11 +2,14 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace ExtendedControls
 {
     public partial class ComboBoxExtended : UserControl
     {
+        private ComboList comboList = new ComboList();
+
         //Padding variables
         private int top = 0;
         private int bottom = 0;
@@ -214,29 +217,52 @@ namespace ExtendedControls
 
         private void pictureBox1_Click(object sender, System.EventArgs e)
         {
-            //@TODO work out here how to display list of items
             //@TODO enable icons next to list items
+
+            //Displays drop down list (Form ComboList) and sets up the sizes
+            Point abspos = textBox1.PointToScreen(Point.Empty);
+            comboList.Top = abspos.Y + textBox1.Height;
+            comboList.Left = abspos.X;
+            comboList.ListWidth = textBox1.Width;
+            //@TODO comboList.ListHeight = DropDownHeight; create required variables in ComboList.cs and above here with accessors for properties window
+            
+            //Grabs lost focus of comboList and hides it
+            comboList.Deactivate += delegate
+            {
+                comboList.Hide();
+            };
+
+            comboList.Show();
         }
 
+        //@TODO Allow change button icon or color
         private void pictureBox1_MouseEnter(object sender, System.EventArgs e)
         {
-            //@TODO Allow change button icon or color
+            
         }
 
+        //@TODO Change button icon or colour back
         private void pictureBox1_MouseLeave(object sender, System.EventArgs e)
         {
-            //@TODO Change button icon or colour back
+            
         }
 
+        //@TODO change button icon or colour on mouse down
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            //@TODO change button icon or colour on mouse down
+            
         }
 
+        //Changes button icon or colour back to hover colour
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            //Changes button icon or colour back to hover colour
-            pictureBox1_MouseEnter(this.pictureBox1, e);
+            pictureBox1_MouseEnter(sender, e);
+        }
+
+        //Custom event handler which is built in to ComboTextBox
+        private void textBox1_DropDownRequested(object sender, System.EventArgs e)
+        {
+            pictureBox1_Click(sender, e);
         }
     }
 }

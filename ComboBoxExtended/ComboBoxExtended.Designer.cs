@@ -34,7 +34,7 @@ namespace ExtendedControls
             this.panelBottom = new System.Windows.Forms.Panel();
             this.panelTop = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new ExtendedControls.ComboTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,7 +93,8 @@ namespace ExtendedControls
             this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(172, 24);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.TabIndex = 4;
+            this.textBox1.DropDownRequested += new System.EventHandler(this.textBox1_DropDownRequested);
             // 
             // pictureBox1
             // 
@@ -137,7 +138,7 @@ namespace ExtendedControls
         private System.Windows.Forms.Panel panelBottom;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private ComboTextBox textBox1;
     }
 }
