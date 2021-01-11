@@ -1,12 +1,13 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace ExtendedControls
 {
-    public partial class PriceBox : UserControl
+    public partial class ComboBoxExtended : UserControl
     {
+        //Padding variables
         private int top = 0;
         private int bottom = 0;
         private int left = 0;
@@ -15,7 +16,8 @@ namespace ExtendedControls
         private Color bottomcolor = SystemColors.Control;
         private Color leftcolor = SystemColors.Control;
         private Color rightcolor = SystemColors.Control;
- 
+        
+        //Padding accessors
         [Category("Extended Padding")]
         [Description("Padding at the top of the TextBox")]
         [DisplayName("Padding Top")]
@@ -81,17 +83,18 @@ namespace ExtendedControls
             set { rightcolor = value; UpdateBox(); }
         }
 
+        //Appearance based accessors
         [Category("Appearance")]
-        [Description("Displayed decimal value")]
-        [DisplayName("Value")]
+        [Description("Displayed text")]
+        [DisplayName("Text")]
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Bindable(true)]
-        public decimal Value
+        public override string Text
         {
-            get { return decimal.Parse(textBox1.Text); }
-            set { value = Math.Round(value, 2); textBox1.Text = value.ToString(); textBox1_Validating(textBox1, new System.ComponentModel.CancelEventArgs()); UpdateBox(); }
+            get { return textBox1.Text; }
+            set { textBox1.Text = value; UpdateBox(); }
         }
 
         [Category("Appearance")]
@@ -120,17 +123,65 @@ namespace ExtendedControls
             set { textBox1.TextAlign = value; UpdateBox(); }
         }
 
+        [Category("Appearance")]
+        [Description("Drop down button Icon")]
+        [DisplayName("Button Icon")]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Bindable(true)]
+        public Image ButtonIcon
+        {
+            get { return pictureBox1.Image; }
+            set { pictureBox1.Image = value; UpdateBox(); }
+        }
+
+        [Category("Appearance")]
+        [Description("Drop down button background color")]
+        [DisplayName("Button BackColor")]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Bindable(true)]
+        public Color ButtonBackColor
+        {
+            get { return pictureBox1.BackColor; }
+            set { pictureBox1.BackColor = value; UpdateBox(); }
+        }
+
+        //ComboBox Variables
+        private List<string> items;
+        private int selectedIndex;
+
+        //ComboBox accessors
+        [Category("Data")]
+        [Description("List of items that populate the drop down list of the ComboBoxExtended")]
+        [DisplayName("Items")]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Bindable(true)]
+        public List<string> Items
+        {
+            get { return items; }
+            set { items = value; UpdateBox(); }
+        }
+
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set { selectedIndex = value; UpdateBox(); }
+        }
+
         [Browsable(false)]
         public int TextBoxHeight
         {
             get { return textBox1.Height; }
         }
 
-        public PriceBox()
+        public ComboBoxExtended()
         {
             InitializeComponent();
-            Value = 0;
-            label1.Text = System.Globalization.RegionInfo.CurrentRegion.CurrencySymbol;
             UpdateBox();
         }
 
@@ -146,125 +197,46 @@ namespace ExtendedControls
             panelRight.BackColor = PadRightColor;
             textBox1.BackColor = this.BackColor;
             textBox1.ForeColor = this.ForeColor;
+            pictureBox1.Height = textBox1.Height;
+            pictureBox1.Width = textBox1.Height;
             this.Height = textBox1.Height + panelTop.Height + panelBottom.Height;
         }
 
-        private void PriceBoxExtended_BackColorChanged(object sender, System.EventArgs e)
+        private void TextBoxExtended_BackColorChanged(object sender, System.EventArgs e)
         {
             UpdateBox();
         }
 
-        private void PriceBoxExtended_ForeColorChanged(object sender, System.EventArgs e)
+        private void TextBoxExtended_ForeColorChanged(object sender, System.EventArgs e)
         {
             UpdateBox();
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void pictureBox1_Click(object sender, System.EventArgs e)
         {
-            //Stop at max value based on MaxLength
-            if((sender as TextBox).Text.Length > ((sender as TextBox).MaxLength - 4) && ((sender as TextBox).Text.IndexOf('.') == -1) && e.KeyChar != '.')
-            {
-                e.Handled = true;
-            }
-
-            //Check for all selected to allow decimal place as first keystroke
-            if((sender as TextBox).SelectionLength == (sender as TextBox).Text.Length)
-            {
-                if(e.KeyChar == '.')
-                {
-                    textBox1.Text = "0.";
-                    textBox1.SelectionStart = textBox1.Text.Length;
-                    e.Handled = true;
-                }
-            }
-
-            //Checks for sensible key press if units value is zero. Either a decimal place follows 0 unit value or backspace to delete
-            if ((sender as TextBox).Text == "0")
-            {
-                if ((e.KeyChar != '.') && (e.KeyChar != (char)Keys.Back))
-                {
-                    e.Handled = true;
-                }
-            }
-
-            //Forces a zero infront of decimal place if decimal place is typed with no unit value for values lower the 1
-            if ((sender as TextBox).Text.Length == 0 && (e.KeyChar == '.'))
-            {
-                (sender as TextBox).Text = "0";
-                (sender as TextBox).SelectionStart = (sender as TextBox).Text.Length;
-            }
-
-            //Check for numeric, decimal place and backspace only keys
-            if (!char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != (char)Keys.Back))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-
-            //Allow max of 2 decimal places to be typed
-            TextBox tb = sender as TextBox;
-            int cursorPosLeft = tb.SelectionStart;
-            int cursorPosRight = tb.SelectionStart + tb.SelectionLength;
-            string result = tb.Text.Substring(0, cursorPosLeft) + e.KeyChar + tb.Text.Substring(cursorPosRight);
-            string[] parts = result.Split('.');
-            if (parts.Length > 1 && (e.KeyChar != (char)Keys.Back))
-
-            {
-                if (parts[1].Length > 2 || parts.Length > 2)
-                {
-                    e.Handled = true;
-                }
-            }
+            //@TODO work out here how to display list of items
+            //@TODO enable icons next to list items
         }
 
-        private void textBox1_Enter(object sender, System.EventArgs e)
+        private void pictureBox1_MouseEnter(object sender, System.EventArgs e)
         {
-            textBox1.SelectAll();
+            //@TODO Allow change button icon or color
         }
 
-        private void textBox1_Validating(object sender, CancelEventArgs e)
+        private void pictureBox1_MouseLeave(object sender, System.EventArgs e)
         {
-            
-            //Adds a zero unit to front of value if decimal place is first character
-            if(textBox1.Text.Substring(0, 1) == ".")
-            {
-                textBox1.Text = "0" + textBox1.Text;
-            }
-
-            //Formats blank textbox value to look like monetary zero value
-            if (textBox1.Text == null || textBox1.Text == "")
-            {
-                textBox1.Text = "0.00";
-            }
-
-            //Adds decimals to the end of textbox to look like monetary value
-            if(!textBox1.Text.Contains("."))
-            {
-                textBox1.Text += ".00";
-            }
-
-            //Adds correct amount of zeros to always make up 2 decimal places
-            string[] parts = textBox1.Text.Split('.');
-            while (parts[1].Length < 2)
-            {
-                parts[1] += "0";
-            }
-
-            textBox1.Text = parts[0] + "." + parts[1];
+            //@TODO Change button icon or colour back
         }
 
-        private void textBox1_Click(object sender, System.EventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            //Selects all characters if decimal value of textbox is 0
-            if(decimal.Parse(textBox1.Text) == 0)
-            {
-                textBox1.SelectAll();
-            }
+            //@TODO change button icon or colour on mouse down
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            //Changes button icon or colour back to hover colour
+            pictureBox1_MouseEnter(this.pictureBox1, e);
         }
     }
 }

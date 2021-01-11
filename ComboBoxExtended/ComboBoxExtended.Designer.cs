@@ -1,7 +1,7 @@
 ﻿
 namespace ExtendedControls
 {
-    partial class PriceBox
+    partial class ComboBoxExtended
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,8 +35,9 @@ namespace ExtendedControls
             this.panelTop = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLeft
@@ -78,7 +79,7 @@ namespace ExtendedControls
             // panel1
             // 
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
@@ -89,29 +90,28 @@ namespace ExtendedControls
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(24, 0);
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(248, 24);
+            this.textBox1.Size = new System.Drawing.Size(172, 24);
             this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "0.00";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
-            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
-            // label1
+            // pictureBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "$";
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Location = new System.Drawing.Point(172, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 55);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
-            // PriceBox
+            // ComboBoxExtended
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,12 +120,13 @@ namespace ExtendedControls
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
-            this.Name = "PriceBox";
+            this.Name = "ComboBoxExtended";
             this.Size = new System.Drawing.Size(280, 63);
-            this.BackColorChanged += new System.EventHandler(this.PriceBoxExtended_BackColorChanged);
-            this.ForeColorChanged += new System.EventHandler(this.PriceBoxExtended_ForeColorChanged);
+            this.BackColorChanged += new System.EventHandler(this.TextBoxExtended_BackColorChanged);
+            this.ForeColorChanged += new System.EventHandler(this.TextBoxExtended_ForeColorChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -137,6 +138,6 @@ namespace ExtendedControls
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
