@@ -36,7 +36,8 @@ Similar behaviour to a *checkBox* or a *comboBox* but displays just a small icon
 
 ### **PriceBox**
 **Price formatted version of TextBoxExtended with a decimal Value accessor.**
-* Displays currency symbol of local computers system locale.
+* Displays currency symbol of local computers system locale if `PriceBox.Currency = null`.
+* Currency display can be forced through the PriceBox.Currency string which will reject over 3 characters.
 * Forces 2 decimal places on all values entered.
 * Only allows numeric values to be entered and only one point followed by 2 decimal places.
 * Defaults to display 0.00 if null value.

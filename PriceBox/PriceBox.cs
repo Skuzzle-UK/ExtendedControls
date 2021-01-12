@@ -15,6 +15,7 @@ namespace ExtendedControls
         private Color bottomcolor = SystemColors.Control;
         private Color leftcolor = SystemColors.Control;
         private Color rightcolor = SystemColors.Control;
+        private string currency = null;
  
         [Category("Extended Padding")]
         [Description("Padding at the top of the TextBox")]
@@ -95,6 +96,27 @@ namespace ExtendedControls
         }
 
         [Category("Appearance")]
+        [Description("Displayed currency symbol")]
+        [DisplayName("Currency Symbol")]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Bindable(true)]
+        public string Currency
+        {
+            get { return currency; }
+            set
+            {
+                currency = value;
+                if (currency.Length > 3)
+                {
+                    currency = currency.Substring(0, 3);
+                }
+                UpdateBox();
+            }
+        }
+
+        [Category("Appearance")]
         [Description("Maximum length including point and decimal places")]
         [DisplayName("Max Length")]
         [Browsable(true)]
@@ -146,6 +168,14 @@ namespace ExtendedControls
             panelRight.BackColor = PadRightColor;
             textBox1.BackColor = this.BackColor;
             textBox1.ForeColor = this.ForeColor;
+            if (currency != null && currency != "")
+            {
+                label1.Text = currency;
+            }
+            else
+            {
+                label1.Text = System.Globalization.RegionInfo.CurrentRegion.CurrencySymbol;
+            }
             this.Height = textBox1.Height + panelTop.Height + panelBottom.Height;
         }
 
